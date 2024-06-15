@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Caching.Memory;
 using NetCore.CachingDemo.Api.Models.Continents;
 using NetCore.CachingDemo.Api.Seed;
-using System.Net;
 
 namespace NetCore.CachingDemo.Api.Controllers
 {
