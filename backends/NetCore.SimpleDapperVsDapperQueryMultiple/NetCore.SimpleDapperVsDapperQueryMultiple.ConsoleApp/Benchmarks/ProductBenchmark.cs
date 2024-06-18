@@ -3,20 +3,35 @@ using NetCore.SimpleDapperVsDapperQueryMultiple.ConsoleApp.Repositories;
 
 namespace NetCore.SimpleDapperVsDapperQueryMultiple.ConsoleApp.Benchmarks
 {
-    internal class ProductBenchmark
+    public class ProductBenchmark
     {
-        private readonly ProductRepository _repository = new ProductRepository();
+        static int NumberOfValidations = 100;
+
+        public ProductBenchmark()
+        {
+            Setup();
+        }
+
+        private void Setup()
+        {
+            var repository = new ProductRepository();
+            repository.RunSeed();
+        }
 
         [Benchmark]
         public async Task SimpleDapperBenchmark()
         {
-            await _repository.GetSimpleDapper();
+            var repository = new ProductRepository();
+            for (int i = 0; i < NumberOfValidations; i++)
+                await repository.GetSimpleDapper();
         }
 
         [Benchmark]
         public async Task DapperQueryMultipleBenchmark()
         {
-            await _repository.GetDapperQueryMultiple();
+            var repository = new ProductRepository();
+            for (int i = 0; i < NumberOfValidations; i++)
+                await repository.GetDapperQueryMultiple();
         }
     }
 }
