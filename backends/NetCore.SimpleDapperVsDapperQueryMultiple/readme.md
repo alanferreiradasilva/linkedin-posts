@@ -2,7 +2,7 @@
 SimpleDapperVsDapperQueryMultiple.ConsoleApp
 
 # Description:
-A simple console application to compate the performance between a simple dapper query method and dapper QueryMultiple method interactinf with many queries.
+A simple console application to compare performance between a simple Dapper Query method and a Dapper QueryMultiple method interacting with many queries.
 
 # Setup Instructions:
 Prerequisites:
