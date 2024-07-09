@@ -34,5 +34,4 @@ namespace NetCore.TestOrdering.Test.Tests
             SalaryCalculator.NetSalary.ShouldBeGreaterThan(0);
         }
     }
-
 }

@@ -7,8 +7,7 @@ namespace NetCore.TestOrdering.Test.Tests
     {
         private const string FilePath = "file.txt";
 
-        [Fact]
-        [Priority(1)]
+        [Fact, Priority(1)]
         public void CreateFile()
         {
             using (var writer = new StreamWriter(FilePath))
@@ -18,8 +17,7 @@ namespace NetCore.TestOrdering.Test.Tests
             File.Exists(FilePath).ShouldBeTrue();
         }
 
-        [Fact]
-        [Priority(2)]
+        [Fact, Priority(2)]
         public void EditFirstLineFile()
         {
             var lines = File.ReadAllLines(FilePath);
@@ -27,24 +25,21 @@ namespace NetCore.TestOrdering.Test.Tests
             File.WriteAllLines(FilePath, lines);
         }
 
-        [Fact]
-        [Priority(3)]
+        [Fact, Priority(3)]
         public void VerifyFileEdit()
         {
             var firstLine = File.ReadLines(FilePath).First();
             firstLine.ShouldBe("Xunit ordering test edited");
         }
 
-        [Fact]
-        [Priority(4)]
+        [Fact, Priority(4)]
         public void DeleteFile()
         {
             File.Exists(FilePath).ShouldBeTrue();
             File.Delete(FilePath);
         }
 
-        [Fact]
-        [Priority(5)]
+        [Fact, Priority(5)]
         public void VerifyFileDeletion()
         {
             File.Exists(FilePath).ShouldBeFalse();
