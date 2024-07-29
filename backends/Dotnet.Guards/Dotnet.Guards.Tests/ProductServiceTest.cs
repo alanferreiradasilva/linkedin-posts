@@ -11,7 +11,6 @@ namespace Dotnet.Guards.Tests
         public async Task GetAsync(int id)
         {
             _repository.GetAsync(id).Returns(fakeProduct_GetAsync);
-
             var entity = await _service.GetAsync(id);
 
             entity.ShouldNotBeNull();
@@ -23,11 +22,11 @@ namespace Dotnet.Guards.Tests
         {
             var entity = fakeProduct_CreateAsync;
             _repository.CreateAsync(entity).Returns(entity);
-
             var newEntity = await _service.CreateAsync(entity);
 
-            newEntity.ShouldNotBeNull();
-            newEntity.ShouldBeEquivalentTo(entity);
+            newEntity
+                .ShouldNotBeNull()
+                .ShouldBeEquivalentTo(entity);
         }
 
         [Theory]
@@ -45,8 +44,7 @@ namespace Dotnet.Guards.Tests
         {
             await Should.ThrowAsync<ArgumentNullException>(async () =>
             {
-                Product entity = null;
-                var newEntity = await _service.CreateAsync(entity);
+                var newEntity = await _service.CreateAsync(null);
             });
         }
     }
