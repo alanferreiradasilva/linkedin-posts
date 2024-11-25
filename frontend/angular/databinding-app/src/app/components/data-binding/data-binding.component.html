@@ -1,0 +1,43 @@
+<div class="container mt-5 mb-5">
+    
+    <div class="row justify-content-center">
+        <div class="col-6">
+
+            <div class="card">
+                <div class="card-title p-2">
+                    <h2>Angular and Data binding</h2>
+                </div>
+        
+                <div class="card-body d-grid gap-3">
+                    <h3>Hello, {{ name }}!</h3>  <!-- Interpolation -->
+        
+                    <button class="btn btn-primary" (click)="changeName()">Change Name</button>  <!-- Event Binding -->
+        
+                    <input type="text" class="form-control" 
+                        [value]="name" 
+                        (input)="inputValue=$any($event.target).value"> <!-- Property & Event Binding -->
+                    
+                    <p>Input value: {{inputValue}}</p>
+        
+                    <p [ngClass]="{'active': isActive}">
+                        This paragraph is active or inactive depending on isActive
+                    </p> <!-- Attribute Binding (ngClass) -->
+        
+                    <input type="text" class="form-control" [(ngModel)]="name">  <!-- Two-way Binding -->
+        
+                    <a [href]=" 'https://www.google.com?q=' + name">Search {{name}} on Google</a> <!-- Attribute Binding -->
+        
+                    <div [style.color]="isActive ? 'green' : 'red'">
+                        Text is green if isActive is true, red otherwise.
+                    </div> <!-- Attribute Binding (style) -->
+        
+                    <p>Current date: {{ currentDate | date }}</p> <!-- Interpolation with pipe -->
+        
+                    <button class="btn btn-primary" (click)="save()">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
